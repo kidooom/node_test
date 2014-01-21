@@ -116,3 +116,9 @@ console.log(_.defaults({name: 'kazuya'}, {name: 'hiroshi', age: 33}));
 console.log('ランダム値取得: _.random(min, max) ');
 console.log(_.random(0,100));
 
+
+console.log([251,266,134].sort(function(a, b){if(a>b)return 0; return 1;}));
+console.log(_.sortBy([251,266,134], function(a){
+  return -parseInt(a, 10);
+}));
+
