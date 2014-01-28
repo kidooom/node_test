@@ -67,8 +67,8 @@ console.log('min(list, iterator): listの中の最小値を求める');
 console.log(_.min([1,2,3,4,5], function(num){return -num}));
 
 console.log('sortBy(list, iterator): 各要素をiteratorの返り値でランク付けしてソートしたlistを返す');
-console.log(_.sortBy([1,2,3,4,5], function(num){
-  return Math.sin(num);
+console.log(_.sortBy([3,2,1,4,5], function(num){
+  return num;
 }));
 
 console.log('sortedIndex(list, value, iterator): ２文探索で、valueがlistの挿入されるべき位置を調べ、そのindexを渡す。');
@@ -127,8 +127,27 @@ var CloneTest = function(){
   this.secret = "secret";
 };
 
-var
-console.log()
+var userTickets = [
+  {id: "10", expiredAt: "12345", amount: 5},
+  {id: "10", expiredAt: "45678", amount: 3},
+  {id: "11", expiredAt: "98765", amount: 2}
+];
 
+var theTicket = _.detect(userTickets, function(ticket){
+  return ticket.expiredAt === '45678';
+});
 
+console.log('the ticket id is ' + theTicket.id + ' expiredAt is ' + theTicket.expiredAt);
 
+var totalTicketAmount = _.reduce(userTickets, function(memo, ticket){
+  return memo + ticket.amount;
+}, 0);
+console.log("totalTicketAmount = " + totalTicketAmount);
+
+_.each(userTickets, function(ticket) {
+  ticket.amount -= 1;
+});
+
+_.each(userTickets, function(ticket) {
+  console.log('after ticket id = ' + ticket.id + ', expiredAt = ' + ticket.expiredAt + ', amount = ' + ticket.amount)
+})
