@@ -122,3 +122,13 @@ console.log(_.sortBy([251,266,134], function(a){
   return -parseInt(a, 10);
 }));
 
+var CloneTest = function(){
+  this.id = 100;
+  this.secret = "secret";
+};
+
+var
+console.log()
+
+
+
