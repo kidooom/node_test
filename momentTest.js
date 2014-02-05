@@ -26,13 +26,20 @@ var unixTime = moment().unix();
 // timezone配慮した来月末のunixTime
 console.log(moment.unix(unixTime).zone(5).add('months', 1).endOf('month').unix());
 
+var months = 0;
+var currentMonthUnixTime = moment.unix(unixTime).zone(-540 || 0).add('months', months || 1).unix();
+console.log('currentMonthUnixTime: ' + currentMonthUnixTime);
 
 var nextMonthUnixTime = moment.unix(unixTime).zone(-540 || 0).add('months', 1).unix();
-console.log(nextMonthUnixTime);
+console.log('nextMonthUnixTime: ' + nextMonthUnixTime);
 
 var futureMonthUnixTime = moment.unix(unixTime).zone(-540 || 0).add('months', 2).unix();
-console.log(futureMonthUnixTime);
+console.log('futureMonthUnixTime: ' + futureMonthUnixTime);
 
 var nextExpiredAt = moment.unix(unixTime).zone(-540).add('months', 1).endOf('month').unix();
-console.log(nextExpiredAt);
+console.log('nextExpiredAt: ' + nextExpiredAt);
+
+var pastMonthUnixTime = moment.unix(unixTime).zone(-540 || 0).add('months', -1).unix();
+console.log('pastMonthUnixTime: ' + pastMonthUnixTime);
+
 
