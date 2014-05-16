@@ -151,3 +151,84 @@ _.each(userTickets, function(ticket) {
 _.each(userTickets, function(ticket) {
   console.log('after ticket id = ' + ticket.id + ', expiredAt = ' + ticket.expiredAt + ', amount = ' + ticket.amount)
 })
+
+
+var arrayTest = {};
+arrayTest[1] = {};
+arrayTest[1][100] = {materials: [1,2,3,4]};
+arrayTest[2] = {};
+arrayTest[2][100] = {materials: [4,5,6]};
+
+_.each(arrayTest, function(hoge) {
+  _.each(hoge, function(foo) {
+    _.each(foo.materials, function(material) {
+      console.log('material: ' + material);
+    });
+  });
+});
+
+
+var materialIds = _.uniq(_.flatten(_.map(arrayTest, function(hoge) {
+  return _.map(hoge, function(foo) {
+    return foo.materials;
+  });
+})));
+
+
+materialIds = _.uniq(materialIds, false);
+console.log('materialIds : ' + materialIds);
+
+var targetId = 7;
+var existTarget = _.contains(materialIds, targetId);
+
+console.log('targetExistance is ' + !!existTarget);
+
+
+
+var characters = [
+  {id:1, number: 1},
+  {id:2, number: 2},
+  {id:3, number: 5},
+  {id:4, number: 4},
+  {id:5, number: 3}
+]
+
+var charaNumbers = [];
+_.each(characters, function(character) {
+  console.log(character);
+  if(_.any(charaNumbers, function(charaNum) {
+    return charaNum.number === character.number; })) {
+    console.log("重複あります: characterId=" + character.id);
+  }
+  charaNumbers.push(character);
+})
+
+console.log(charaNumbers);
+
+
+//・欠番がないかチェック(あればthrow)
+//・numberの合計数と最後の番号が同じか(違えばthrow)
+var maxNum = _.max(charaNumbers, function (c) {
+  return c.number;
+});
+var minNum = _.min(charaNumbers, function (c) {
+  return c.number;
+});
+
+console.log("max=" + maxNum.number + ", min=" + minNum.number);
+
+if(maxNum.number !== charaNumbers.length) {
+  console.log("最大numとキャラ数が合わない:size=" + charaNumbers.length);
+}
+
+if(minNum.number !== 1) {
+  console.log("numberが1から始まってない");
+}
+
+
+var bbb = [10, 20, 30];
+var aaa = bbb[0] = bbb[0] || [];
+console.log('before aaa:' + aaa + ', bbb: ' + bbb[0]);
+aaa.push('hello');
+console.log('after aaa:' + aaa + ', bbb: ' + bbb[0]);
+
