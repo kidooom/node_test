@@ -9,3 +9,4 @@ console.log("world");
 var message = new Array(102).join('a');
 console.log(message);
 console.log(message.length);
+console.log(message.length);
